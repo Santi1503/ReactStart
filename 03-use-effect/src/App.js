@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { PruebasComponent } from './Components/PruebasComponent';
-import { MontarDesmontar } from './Components/MontarDesmontar';
+
 
 function App() {
   return (
