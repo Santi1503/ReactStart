@@ -77,3 +77,12 @@
   border-radius: 10px;
   margin-top: 2px;
 }
+
+.usuarios{
+  text-align: center;
+  padding: 20px 0px;
+  font-family: 'Courier New', Courier, monospace;
+  color: azure;
+  background-color: #3b2a4b;
+}
+

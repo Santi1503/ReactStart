@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { PruebasComponent } from './Components/PruebasComponent';
+import { AJAXComponent } from './Components/AJAXComponent';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <PruebasComponent />
+        <AJAXComponent />
       </header>
     </div>
   );
