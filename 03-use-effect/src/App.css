@@ -79,10 +79,23 @@
 }
 
 .usuarios{
-  text-align: center;
-  padding: 20px 0px;
+  text-align: justify;
+  padding: 20px 200px;
   font-family: 'Courier New', Courier, monospace;
   color: azure;
   background-color: #3b2a4b;
 }
 
+.cargando{
+  background-color: #273e4b;
+  color: #61dafb;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.avatar{
+  width: 50px;
+  border-radius: 100px;
+  padding-bottom: 10px 10px;
+}

@@ -12,7 +12,7 @@ export const PruebasComponent = () => {
   }
 
   useEffect(()=>{
-    alert("Bienvenido a la página de inicio")
+    console.log("Bienvenido a la página de inicio")
   }, [])
 
   return (
