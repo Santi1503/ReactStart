@@ -17,7 +17,7 @@ export const PruebasComponent = () => {
 
   return (
     <div>
-        <h1 className={ contador >= 50 ? 'title-pass' : 'title'}>Let the Journey Begin</h1>
+        <h1 className={ usuario === "Santiago Gómez de la Torre" ? 'title-pass' : 'title'}>Let the Journey Begin</h1>
 
         <span><strong className='label'>{usuario}</strong></span>
         <p>
