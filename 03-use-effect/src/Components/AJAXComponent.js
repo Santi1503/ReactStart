@@ -5,6 +5,8 @@ export const AJAXComponent = () => {
 
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [errors, setErrors] = useState("");
+
 
     /*const getUsuariosEstaticos = () => {
         setUsuarios([
@@ -37,10 +39,11 @@ export const AJAXComponent = () => {
                 setUsuarios(data);
                 setLoading(false);
             } catch(error){
-                console.log("No se han encontrado los datos", error);
+                console.log(error);
+                setErrors(error.message)
             }
            
-        }, 3000)
+        }, 3000);
         
     }
 
@@ -50,13 +53,19 @@ export const AJAXComponent = () => {
         getUsuariosAjaxAsyncAwait();
     }, [])
 
-    if(loading === true) {
+    if (errors !== ""){
+        return(
+            <div className='errors'>
+                No data available
+            </div>
+        )
+    }else if(loading === true) {
         return (
             <div className='cargando'>
                 Cargando data...
             </div>
         )
-    }else{
+    }else if(loading === false && errors === ""){
         return (
             <div>
                 <h2 className='title'>Lista de usuarios creados - AJAX</h2>

@@ -99,3 +99,13 @@
   border-radius: 100px;
   padding-bottom: 10px 10px;
 }
+
+.errors{
+  text-align: center;
+  color: #c94e4e;
+  background-color: #3c1111;
+  padding: 10px 10px;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 20px;
+  margin-top: 10%;
+}
