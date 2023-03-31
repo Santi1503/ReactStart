@@ -30,11 +30,16 @@ export const AJAXComponent = () => {
     const getUsuariosAjaxAsyncAwait = () => {
 
         setTimeout(async() => {
-            const peticion = await fetch("https://reqres.in/api/users?page=1");
-            const {data} = await peticion.json();
-
-            setUsuarios(data);
-            setLoading(false);
+            try{
+                const peticion = await fetch("https://reqres.in/api/users?page=1");
+                const {data} = await peticion.json();
+    
+                setUsuarios(data);
+                setLoading(false);
+            } catch(error){
+                console.log("No se han encontrado los datos", error);
+            }
+           
         }, 3000)
         
     }
