@@ -42,4 +42,35 @@
   background-color: #27324b;
   border-radius: 10px;
   padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form{
+  background-color: #384157;
+  margin: 10px;
+  padding: 20px 20px;
+  width: 50%;
+  text-align: center;
+  margin-left: 20%;
+  border-radius: 20px;
+}
+
+.name{
+  background-color: #27324b;
+  color: azure;
+  margin-top: -25px;
+  margin-bottom: -20px;
+  padding: 15px;
+  border-radius: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.gender{
+  background-color: #27324b;
+  color: azure;
+  margin-top: -25px;
+  margin-bottom: -20px;
+  padding: 10px;
+  border-radius: 20px;
+  width: 50%;
 }
