@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <title>Proyecto Peliculas</title>
+</head>
+<body>
+    <div class="layout">
+        <!--Cabecera-->
+        <header class="header">
+            <div class="logo">
+                <div class="play"></div>
+            </div>
+            <h1>BalgitPelis</h1>
+        </header>
+
+        <!--Barra de navegación-->
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Peliculas</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!--Contenido Principal-->
+        <section class="content">
+            <article class="peli-item">
+                <h3 class="title">Meteoro - Speedracer</h3>
+                <p class="description">Mejor peli de la historia</p>
+
+                <button class="edit">Editar</button>
+                <button class="delete">Eliiminar</button>
+            </article>
+
+            <article class="peli-item">
+                <h3 class="title">Shrek 2</h3>
+                <p class="description">Puedes callarte por solo 5 minutos</p>
+
+                <button class="edit">Editar</button>
+                <button class="delete">Eliiminar</button>
+            </article>
+
+            <article class="peli-item">
+                <h3 class="title">Dragon Ball Broly</h3>
+                <p class="description">Peli-culon</p>
+
+                <button class="edit">Editar</button>
+                <button class="delete">Eliiminar</button>
+            </article>
+
+            <article class="peli-item">
+                <h3 class="title">Sword Art Online</h3>
+                <p class="description">Perdio mis espectativas</p>
+
+                <button class="edit">Editar</button>
+                <button class="delete">Eliiminar</button>
+            </article>
+        </section>
+
+        <!--Barra lateral-->
+        <aside class="lateral">
+            <div class="search">
+                <h3 class="title">Buscador</h3>
+                <form action="#">
+                    <input type="text" id="" placeholder=" "/>
+                    <button>Buscar Pelicula</button>
+                </form>
+            </div>
+
+            <div class="add">
+                <h3 class="title">Agregar Pelicula</h3>
+                <form action="#">
+                    <input type="text" placeholder="Titulo" />
+                    <textarea name="description" placeholder="Descripcion"></textarea>
+                    <input type="submit" value="Guardar">
+                </form>
+            </div>
+        </aside>
+
+        <!--Pie de Pagina-->
+        <footer class="footer">
+            &copy; BalgitPelis - <a href="https://www.youtube.com/@balgittuber9815">BalgitTuber</a>
+        </footer>
+    </div>
+</body>
+</html>
