@@ -18,7 +18,7 @@ body{
         "lateral content content content"
         "footer footer footer footer"
     ;
-    grid-template-rows: 100px 70px auto 70px;
+    grid-template-rows: 100px 70px 800px 10px;
 }
 
 /* HEADER */
@@ -100,6 +100,7 @@ body{
 }
 
 .peli-item{
+    flex-grow: 1;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 0px 6px #ddd;
@@ -149,12 +150,58 @@ input[type="button"]{
 
 .lateral > div{
     box-sizing: border-box;
-    
+    width: 90%;
+    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #ddd;
 }
+
+.lateral input[type="text"],
+.lateral input[type="search"],
+.lateral textarea{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    background: #f6f7f9;
+    color: #454545;
+    width: 80%;
+    opacity: 4;
+    outline: 0;
+    border-color: transparent;
+}
+
+
+
 
 /* FOOTER */
 .footer{
     grid-area: footer;
-    border: 5px solid rgb(0, 0, 0);
-    background: rgb(115, 113, 236);
+    background: #d1defa;
+    color: #454545;
+    border-top: 1px solid white;
+    text-align: left;
+    line-height: 68px;
+    padding-left: 25px;
+}
+
+.footer a{
+    color: #0b468a;
+    text-decoration: none;
+}
+
+@media (max-width: 1085px){
+    .content{
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .peli-item{
+        width: 80%;
+    }
 }
