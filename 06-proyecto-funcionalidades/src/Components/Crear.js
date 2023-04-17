@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Crear = () => {
 
-  const title = "Añadir Película";
+  const titleComponent = "Añadir Película";
+
+  const [peliState, setPeliState] = useState({
+    title: '',
+    description: ''
+  });
+
+  const {title, description} = peliState;
 
   const conseguirDatosForm = e =>{
     e.preventDefault();
@@ -12,18 +19,39 @@ export const Crear = () => {
     let description = target.description.value;
 
 
-    let peli={
+    let peli = {
       id: new Date().getTime(),
       title,
       description
     }
-    console.log(peli);
+    setPeliState(peli);
+    
+    guardarEnStorage(peli)
+
+
+  }
+
+  const guardarEnStorage = peli => {
+
+    let elementos = JSON.parse(localStorage.getItem("pelis"));
+
+    console.log(elementos);
+
+    if(Array.isArray(elementos)){
+      elementos.push(peli);
+    }else{
+      elementos = [peli];
+    }
+
+    localStorage.setItem("pelis", JSON.stringify(elementos))
+
+    return peli;    
   }
 
   return (
     <div className="add">
-        <h3 className="title">{title}</h3>
-
+        <h3 className="title">{titleComponent}</h3>
+        <strong>{(title && description) && "Has creado la película: " + title}</strong>
         <form onSubmit={conseguirDatosForm}>
             <input name='title' type="text" placeholder="Titulo" />
             <textarea name="description" id='description' placeholder="Descripcion"></textarea>
