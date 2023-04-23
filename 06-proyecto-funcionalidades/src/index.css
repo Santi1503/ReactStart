@@ -25,7 +25,7 @@ body{
 
 .header{
   grid-area: header;
-  background: white;
+  background: rgb(216, 176, 102);
   text-align: left;
   font-style: italic;
   display: flex;
@@ -33,7 +33,7 @@ body{
 }
 
 .logo{
-  background: linear-gradient(90deg, #029c4f 10%, #4eeec1 100%);
+  background: linear-gradient(90deg, #a56b14 10%, #d49645 100%);
   width: 40px;
   height: 40px;
   border-radius: 300px;
@@ -59,7 +59,7 @@ body{
 
 .nav{
   grid-area: nav;
-  background: linear-gradient(90deg, #029c4f 10%, #4eeec1 100%);
+  background: linear-gradient(90deg, #ac842f 10%, #c9862e 100%);
 }
 
 .nav > ul{
@@ -79,7 +79,7 @@ body{
   margin-right: 30px;
   font-size: 18px;
   font-weight: lighter;
-  color: white;
+  color: rgb(7, 7, 7);
   text-decoration: none;
   transition: all 300ms;
 }
@@ -92,7 +92,7 @@ body{
 
 .content{
   grid-area: content;
-  background: #f6f7f9;
+  background: #f3d28c;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -101,9 +101,9 @@ body{
 
 .peli-item{
   flex-grow: 1;
-  background: white;
+  background: rgb(216, 163, 83);
   border-radius: 10px;
-  box-shadow: 0px 0px 6px #ddd;
+  box-shadow: 0px 0px 6px #975508;
   margin: 20px;
   padding-top: 60px;
   padding-bottom: 60px;
@@ -117,8 +117,8 @@ button,
 input[type="submit"],
 input[type="button"]{
   width: 100px;
-  background: #029c4f;
-  color: white;
+  background: #f5c781;
+  color: rgb(0, 0, 0);
   border: 0px;
   outline: 0px;
   padding: 15px;
@@ -136,19 +136,23 @@ input[type="button"]{
 }
 
 .edit:hover{
-  background: #0465b4;
+  background: #51924b;
 }
 
 .delete:hover{
-  background: #ba0202;
+  background: #8a3d3d;
 }
 
+.no-items{
+  justify-content: center;
+  padding: 20px;  
+}
 
 /* LATERAL */
 .lateral{
   grid-area: lateral;
-  background: #f6f7f9;
-  border-right: 1px solid #ddd;
+  background: #d4b36c;
+  border-right: 1px solid #ca851e;
   padding: 20px;
 }
 
@@ -158,9 +162,9 @@ input[type="button"]{
   margin: 20px;
   padding: 20px;
   padding-top: 10px;
-  background-color: white;
+  background-color: rgb(175, 138, 57);
   border-radius: 10px;
-  box-shadow: 0px 0px 6px #ddd;
+  box-shadow: 0px 0px 6px #a76e2e;
 }
 
 .lateral input[type="text"],
@@ -171,8 +175,8 @@ input[type="button"]{
   margin-top: 15px;
   padding: 12px;
   border-radius: 5px;
-  background: #f6f7f9;
-  color: #454545;
+  background: #f0c361;
+  color: #000000;
   width: 80%;
   opacity: 4;
   outline: 0;
@@ -180,19 +184,19 @@ input[type="button"]{
 }
 
 .buscar:hover{
-  background: #0465b4;
+  background: #466ab8;
 }
 
 .guardar:hover{
-  background: #0465b4;
+  background: #466ab8;
 }
 
 /* FOOTER */
 .footer{
   grid-area: footer;
-  background: #d1defa;
+  background: #fde3bc;
   color: #454545;
-  border-top: 1px solid white;
+  border-top: 1px solid rgb(247, 203, 121);
   text-align: left;
   line-height: 68px;
   padding-left: 25px;

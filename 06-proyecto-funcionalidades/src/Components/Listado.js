@@ -1,39 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const Listado = () => {
+export const Listado = ({listadoState, setListadoState}) => {
+    // const [listadoState, setListadoState] = useState([])
+
+    useEffect(() => {
+        console.log("listado de películas")
+        conseguirPeliculas();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const conseguirPeliculas = () => {
+        let peliculas = JSON.parse(localStorage.getItem("pelis"));
+        
+        setListadoState(peliculas)
+    }
+
   return (
     <>
-        <article className="peli-item">
-            <h3 className="title">Meteoro - Speedracer</h3>
-            <p className="description">Mejor peli de la historia</p>
+        {listadoState!=null ? 
+                    listadoState.map(peli => {
+                      return (
+                        <article key={peli.id} className="peli-item">
+                            <h3 className="title">{peli.title}</h3>
+                            <p className="description">{peli.description}</p>
 
-            <button className="edit">Editar</button>
-            <button className="delete">Eliminar</button>
-        </article>
-
-        <article className="peli-item">
-            <h3 className="title">Shrek 2</h3>
-            <p className="description">Puedes callarte por solo 5 minutos</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Eliminar</button>
-        </article>
-
-            <article className="peli-item">
-            <h3 className="title">Dragon Ball Broly</h3>
-            <p className="description">Peli-culon</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Eliminar</button>
-        </article>
-
-        <article className="peli-item">
-            <h3 className="title">Sword Art Online</h3>
-            <p className="description">Perdio mis espectativas</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Eliminar</button>
-        </article>
+                            <button className="edit">Editar</button>
+                            <button className="delete">Eliminar</button>
+                        </article>
+            );
+        })
+        : <h2 className='no-items'>No hay películas registradas</h2>
+    }
     </>
   )
 }

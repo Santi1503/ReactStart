@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { GuardarEnStorage } from '../helpers/GuardarEnStorage';
 
-export const Crear = () => {
+export const Crear = ({setListadoState}) => {
 
   const titleComponent = "Añadir Película";
 
@@ -25,27 +26,12 @@ export const Crear = () => {
       description
     }
     setPeliState(peli);
+
+    setListadoState(elemento =>{
+      return [...elemento, peli];
+    });
     
-    guardarEnStorage(peli)
-
-
-  }
-
-  const guardarEnStorage = peli => {
-
-    let elementos = JSON.parse(localStorage.getItem("pelis"));
-
-    console.log(elementos);
-
-    if(Array.isArray(elementos)){
-      elementos.push(peli);
-    }else{
-      elementos = [peli];
-    }
-
-    localStorage.setItem("pelis", JSON.stringify(elementos))
-
-    return peli;    
+    GuardarEnStorage("pelis", peli);
   }
 
   return (
@@ -53,8 +39,8 @@ export const Crear = () => {
         <h3 className="title">{titleComponent}</h3>
         <strong>{(title && description) && "Has creado la película: " + title}</strong>
         <form onSubmit={conseguirDatosForm}>
-            <input name='title' type="text" placeholder="Titulo" />
-            <textarea name="description" id='description' placeholder="Descripcion"></textarea>
+            <input name='title' type="text" placeholder="Título" />
+            <textarea name="description" id='description' placeholder="Descripción o etiquetas"></textarea>
             <input className="guardar" type="submit" value="Guardar" />
         </form>
     </div>
