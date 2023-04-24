@@ -25,7 +25,7 @@ body{
 
 .header{
   grid-area: header;
-  background: rgb(216, 176, 102);
+  background: #d8a573;
   text-align: left;
   font-style: italic;
   display: flex;
@@ -33,7 +33,7 @@ body{
 }
 
 .logo{
-  background: linear-gradient(90deg, #a56b14 10%, #d49645 100%);
+  background: linear-gradient(90deg, #8e5535 10%, #9a684c 100%);
   width: 40px;
   height: 40px;
   border-radius: 300px;
@@ -59,7 +59,7 @@ body{
 
 .nav{
   grid-area: nav;
-  background: linear-gradient(90deg, #ac842f 10%, #c9862e 100%);
+  background: linear-gradient(90deg, #90683b 10%, #92663c 100%);
 }
 
 .nav > ul{
@@ -92,7 +92,7 @@ body{
 
 .content{
   grid-area: content;
-  background: #f3d28c;
+  background: #d6b595;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -101,9 +101,9 @@ body{
 
 .peli-item{
   flex-grow: 1;
-  background: rgb(216, 163, 83);
+  background: #90683b;
   border-radius: 10px;
-  box-shadow: 0px 0px 6px #975508;
+  box-shadow: 0px 0px 6px #49321c;
   margin: 20px;
   padding-top: 60px;
   padding-bottom: 60px;
@@ -117,7 +117,7 @@ button,
 input[type="submit"],
 input[type="button"]{
   width: 100px;
-  background: #f5c781;
+  background: #d6b595;
   color: rgb(0, 0, 0);
   border: 0px;
   outline: 0px;
@@ -151,8 +151,8 @@ input[type="button"]{
 /* LATERAL */
 .lateral{
   grid-area: lateral;
-  background: #d4b36c;
-  border-right: 1px solid #ca851e;
+  background: #d8a573;
+  border-right: 1px solid #545454;
   padding: 20px;
 }
 
@@ -162,9 +162,10 @@ input[type="button"]{
   margin: 20px;
   padding: 20px;
   padding-top: 10px;
-  background-color: rgb(175, 138, 57);
+  background-color: #90683b;
   border-radius: 10px;
-  box-shadow: 0px 0px 6px #a76e2e;
+  box-shadow: 0px 0px 6px #49321c;
+
 }
 
 .lateral input[type="text"],
@@ -175,8 +176,8 @@ input[type="button"]{
   margin-top: 15px;
   padding: 12px;
   border-radius: 5px;
-  background: #f0c361;
-  color: #000000;
+  background: #fff1d9;
+  color: #49321c;
   width: 80%;
   opacity: 4;
   outline: 0;
@@ -194,7 +195,7 @@ input[type="button"]{
 /* FOOTER */
 .footer{
   grid-area: footer;
-  background: #fde3bc;
+  background: #90683b;
   color: #454545;
   border-top: 1px solid rgb(247, 203, 121);
   text-align: left;
