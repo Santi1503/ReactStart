@@ -13,7 +13,21 @@ export const Listado = ({listadoState, setListadoState}) => {
     const conseguirPeliculas = () => {
         let peliculas = JSON.parse(localStorage.getItem("pelis"));
         
-        setListadoState(peliculas)
+        setListadoState(peliculas);
+
+        return peliculas;
+    }
+
+    const eliminarPeli = (id) =>{
+      
+      let pelis_almacenadas = conseguirPeliculas();
+
+      let nuevoListadoPelis = pelis_almacenadas.filter(peli => peli.id !== parseInt(id));
+
+      setListadoState(nuevoListadoPelis);
+
+      localStorage.setItem('pelis', JSON.stringify(nuevoListadoPelis));
+
     }
 
   return (
@@ -26,11 +40,13 @@ export const Listado = ({listadoState, setListadoState}) => {
                             <p className="description">{peli.description}</p>
 
                             <button className="edit">Editar</button>
-                            <button className="delete">Eliminar</button>
+                            <button className="delete" onClick={()=> eliminarPeli(peli.id)}>Eliminar</button>
                         </article>
             );
         })
+        // eslint-disable-next-line no-undef
         : <h2 className='no-items'>No hay películas registradas</h2>
+
     }
     </>
   )
