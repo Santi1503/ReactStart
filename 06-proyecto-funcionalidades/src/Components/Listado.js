@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Editar } from './Editar';
 
 export const Listado = ({listadoState, setListadoState}) => {
     // const [listadoState, setListadoState] = useState([])
+
+    const [editar, setEditar] = useState(0);
 
     useEffect(() => {
         console.log("listado de películas")
@@ -39,8 +42,12 @@ export const Listado = ({listadoState, setListadoState}) => {
                             <h3 className="title">{peli.title}</h3>
                             <p className="description">{peli.description}</p>
 
-                            <button className="edit">Editar</button>
+                            <button className="edit" onClick={ () => {
+                              setEditar(peli.id)
+                            }}>Editar</button>
                             <button className="delete" onClick={()=> eliminarPeli(peli.id)}>Eliminar</button>
+
+                            {editar === peli.id && ( <Editar peli={peli} />)}
                         </article>
             );
         })

@@ -219,3 +219,29 @@ input[type="button"]{
       width: 80%;
   }
 }
+
+/* EDITAR */
+.edit_form{
+  background-color: #d8a573;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 25px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+}
+
+.edit_form input[type="text"],
+.edit_form textarea{
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 5px; 
+  background: #fff1d9;
+  color: #49321c;
+  width: 80%;
+  opacity: 4;
+  outline: 0;
+  border-color: transparent;
+}

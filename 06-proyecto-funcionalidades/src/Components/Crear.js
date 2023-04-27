@@ -28,7 +28,7 @@ export const Crear = ({setListadoState}) => {
     setPeliState(peli);
 
     setListadoState(elemento =>{
-      return [...elemento, peli];
+      return [peli, ...elemento];
     });
     
     GuardarEnStorage("pelis", peli);
