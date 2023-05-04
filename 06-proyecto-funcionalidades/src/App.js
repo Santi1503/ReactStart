@@ -32,14 +32,14 @@ function App() {
 
       {/*Barra lateral*/}
       <aside className="lateral">
-        <Buscador />
+        <Buscador listadoState={listadoState} setListadoState={setListadoState} />
 
         <Crear setListadoState={setListadoState}/>
       </aside>
 
       {/*Pie de Pagina*/}
       <footer className="footer">
-        &copy; BalgitPelis - <a href="https://www.youtube.com/@balgittuber9815">BalgitTuber</a>
+        &copy; Santiago Gómez de la Torre - <a href="www.linkedin.com/in/santiago-gomez-de-la-torre-3a7b62249">Santiago Gómez de la Torre</a>
       </footer>
   </div>);
 }

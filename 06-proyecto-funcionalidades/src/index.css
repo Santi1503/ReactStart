@@ -136,11 +136,11 @@ input[type="button"]{
 }
 
 .edit:hover{
-  background: #51924b;
+  background: #50ea9c;
 }
 
 .delete:hover{
-  background: #8a3d3d;
+  background: #e32c64;
 }
 
 .no-items{
@@ -244,4 +244,12 @@ input[type="button"]{
   opacity: 4;
   outline: 0;
   border-color: transparent;
+}
+
+.save:hover{
+  background: #50ea9c;
+}
+
+.no-encontrado{
+  color: #5b1125;
 }
