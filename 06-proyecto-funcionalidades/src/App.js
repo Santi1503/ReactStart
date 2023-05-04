@@ -39,7 +39,7 @@ function App() {
 
       {/*Pie de Pagina*/}
       <footer className="footer">
-        &copy; Santiago Gómez de la Torre - <a href="www.linkedin.com/in/santiago-gomez-de-la-torre-3a7b62249">Santiago Gómez de la Torre</a>
+        &copy; Santiago Gómez de la Torre - <a href="https://www.linkedin.com/in/santiago-gomez-de-la-torre-3a7b62249">Santiago Gómez de la Torre</a>
       </footer>
   </div>);
 }
