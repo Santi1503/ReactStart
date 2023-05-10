@@ -9,6 +9,7 @@ export const RouterPrincipal = () => {
   return (
     <BrowserRouter>
         {/*Cargar componentes*/}
+        {/*Aqui se carga el componente que contiene el path*/}
         <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/inicio" element={<Inicio />} />
