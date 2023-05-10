@@ -8,6 +8,7 @@ import { MensajeError } from '../Components/Error';
 export const RouterPrincipal = () => {
   return (
     <BrowserRouter>
+        {/*Cargar componentes*/}
         <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/inicio" element={<Inicio />} />
