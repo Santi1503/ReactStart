@@ -4,7 +4,7 @@ export const Buscador = ({listadoState, setListadoState}) => {
 
   const [busqueda, setBusqueda] = useState('');
   const [noEncontrado, setNoEncontrado] = useState(false);
-
+  
   const buscarPeli = (e) => {
 
     setBusqueda(e.target.value);
