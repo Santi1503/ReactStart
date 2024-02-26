@@ -2,8 +2,8 @@ import React from 'react'
 
 export const Portfolio = () => {
   return (
-    <div>
-      <h1>Portafolio</h1>
+    <div className='page'>
+      <h1 className='heading'>Portafolio</h1>
     </div>
   )
 }
