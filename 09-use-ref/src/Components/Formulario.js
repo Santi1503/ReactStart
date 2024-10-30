@@ -37,7 +37,7 @@ export const Formulario = () => {
             <input type="submit" value="Enviar" />
         </form>
 
-        
+        <button onClick={() => nombreInput.current.select() }>Empezar a rellenar formulario</button>
     </div>
   )
 }
