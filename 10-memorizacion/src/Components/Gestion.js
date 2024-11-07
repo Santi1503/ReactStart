@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Empleados } from './Empleados'
 
 export const Gestion = () => {
@@ -14,9 +14,9 @@ export const Gestion = () => {
     console.log("Vista gestion actualizada")
   }, [nombre, vista])
 
-  const mostrarMensaje = () => {
+  const mostrarMensaje = useCallback(() => {
     console.log("Hola que tal soy un mensaje desde el componente  gestion")
-  }
+  })
 
   return (
     <div>
