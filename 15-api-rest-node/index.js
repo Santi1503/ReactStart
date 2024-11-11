@@ -13,10 +13,11 @@ const puerto = 3900
 app.use(cors())
 
 // Convertir body a js
-app.use(express.json())
+app.use(express.json()) // Resibe dato en json
+app.use(express.urlencoded({ extended: true })) // Recibe datos en formato urlencoded
 
 // Rutas
-const articleRoutes = require("./routes/article")
+const articleRoutes = require("./routes/articleRoute")
 
 // Cargar Rutas
 app.use("/api", articleRoutes)
