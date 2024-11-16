@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Inicio } from "../components/pages/Inicio";
 import { Articulos } from "../components/pages/Articulos";
 import { Crear } from "../components/pages/Crear";
@@ -7,6 +7,7 @@ import { Header } from "../components/layout/Header";
 import { Nav } from "../components/layout/Nav";
 import { Sidebar } from "../components/layout/Sidebar";
 import { Footer } from "../components/layout/Footer";
+import { Busqueda } from "../components/pages/Busqueda";
 
 export const BlogRoutes = () => {
   return (
@@ -21,7 +22,16 @@ export const BlogRoutes = () => {
           <Route path="/articulos" element={<Articulos />}></Route>
           <Route path="/crear-articulo" element={<Crear />}></Route>
           <Route path="/articulo" element={<Articulo />}></Route>
-          <Route path="*" element={<Navigate to="/404" />}></Route>
+          <Route path="/buscar/:busqueda" element={<Busqueda />}></Route>
+          <Route
+            path="*"
+            element={
+              <div className="jumbo">
+                <h1>Error 404</h1>
+                <p>La pagina a la que se quiere acceder no existe</p>
+              </div>
+            }
+          ></Route>
         </Routes>
       </section>
       <Sidebar />

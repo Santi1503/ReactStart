@@ -1,18 +1,43 @@
-export const Listado = ({ articles }) => {
+import { GlobalVariables } from "../../Helpers/GlobalVariables";
+import { Petition } from "../../Helpers/Petition";
+
+export const Listado = ({ articles, setArticles }) => {
+  const deleteArticle = async (id) => {
+    let { data } = await Petition(
+      GlobalVariables.url + "articulo/" + id,
+      "DELETE"
+    );
+
+    if (data.status === "success") {
+      let articlesUpdated = articles.filter((article) => article._id !== id);
+
+      setArticles(articlesUpdated);
+    }
+  };
+
   return articles.map((article) => (
     <article key={article._id} className="article-item">
       <div className="mask">
-        <img
-          src={article.image || "default-image-url.jpg"}
-          alt={article.title}
-        />
+        {article.image && (
+          <img src={GlobalVariables.url + "imagen/" + article.image} />
+        )}
+        {!article.image && (
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png" />
+        )}
       </div>
       <div className="datos">
         <h3 className="title">{article.title}</h3>
         <p className="description">{article.content}</p>
 
         <button className="edit">Editar</button>
-        <button className="delete">Eliminar</button>
+        <button
+          className="delete"
+          onClick={() => {
+            deleteArticle(article._id);
+          }}
+        >
+          Eliminar
+        </button>
       </div>
     </article>
   ));

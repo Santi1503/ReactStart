@@ -20,8 +20,13 @@ export const Crear = () => {
 
     if (data.status === "success") {
       setResult("guardado");
+    } else {
+      setResult("error");
+    }
+    const fileInput = document.querySelector("#file");
 
-      const fileInput = document.querySelector("#file");
+    if (data.status === "success" && fileInput.files[0]) {
+      setResult("guardado");
 
       const formData = new FormData();
       formData.append("file0", fileInput.files[0]);
@@ -33,13 +38,11 @@ export const Crear = () => {
         true
       );
 
-      if (upload.status === "success") {
+      if (upload.data.status === "success") {
         setResult("guardado");
       } else {
         setResult("error");
       }
-    } else {
-      setResult("error");
     }
   };
 
