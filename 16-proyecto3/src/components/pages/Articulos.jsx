@@ -8,27 +8,24 @@ export const Articulos = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const receiveArticles = async () => {
-      try {
-        const { data } = await Petition(
-          GlobalVariables.url + "articulos",
-          "GET"
-        );
-
-        if (data.status === "success") {
-          setArticles(data.articles);
-        } else {
-          console.error("Error en la respuesta del servidor:", data.message);
-        }
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error en el fetch:", error.message);
-      }
-    };
-
     receiveArticles();
   }, []);
+
+  const receiveArticles = async () => {
+    try {
+      const { data } = await Petition(GlobalVariables.url + "articulos", "GET");
+
+      if (data.status === "success") {
+        setArticles(data.articles);
+      } else {
+        console.error("Error en la respuesta del servidor:", data.message);
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Error en el fetch:", error.message);
+    }
+  };
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { GlobalVariables } from "../../Helpers/GlobalVariables";
 import { Petition } from "../../Helpers/Petition";
+import { Link } from "react-router-dom";
 
 export const Listado = ({ articles, setArticles }) => {
   const deleteArticle = async (id) => {
@@ -26,10 +27,14 @@ export const Listado = ({ articles, setArticles }) => {
         )}
       </div>
       <div className="datos">
-        <h3 className="title">{article.title}</h3>
+        <h3 className="title">
+          <Link to={"/articulo/" + article._id}>{article.title}</Link>
+        </h3>
         <p className="description">{article.content}</p>
 
-        <button className="edit">Editar</button>
+        <Link to={"/editar/" + article._id} className="edit">
+          Editar
+        </Link>
         <button
           className="delete"
           onClick={() => {

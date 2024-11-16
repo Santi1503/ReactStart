@@ -8,6 +8,7 @@ import { Nav } from "../components/layout/Nav";
 import { Sidebar } from "../components/layout/Sidebar";
 import { Footer } from "../components/layout/Footer";
 import { Busqueda } from "../components/pages/Busqueda";
+import { Editar } from "../components/pages/Editar";
 
 export const BlogRoutes = () => {
   return (
@@ -22,6 +23,8 @@ export const BlogRoutes = () => {
           <Route path="/articulos" element={<Articulos />}></Route>
           <Route path="/crear-articulo" element={<Crear />}></Route>
           <Route path="/articulo" element={<Articulo />}></Route>
+          <Route path="/articulo/:id" element={<Articulo />}></Route>
+          <Route path="/editar/:id" element={<Editar />}></Route>
           <Route path="/buscar/:busqueda" element={<Busqueda />}></Route>
           <Route
             path="*"
