@@ -56,29 +56,32 @@ const crear = async (req, res) => {
 }
 
 const list = (req, res) => {
-    let consulta = Article.find({})
+    setTimeout(() => {
+        let consulta = Article.find({})
     
-    if (isNaN(req.params.ultimos) == false) {
-        consulta.limit(req.params.ultimos)
-    }
+        if (isNaN(req.params.ultimos) == false) {
+            consulta.limit(req.params.ultimos)
+        }
     
-    consulta.sort({createdAt: -1})
+        consulta.sort({createdAt: -1})
     
-    consulta.then((articles) => {
-        return res.status(200).send({
-            status: "success",
-            parametro: req.params.ultimos,
-            count: articles.length,
-            articles,
-            message: "Artículos obtenidos correctamente"
+        consulta.then((articles) => {
+            return res.status(200).send({
+                status: "success",
+                parametro: req.params.ultimos,
+                count: articles.length,
+                articles,
+                message: "Artículos obtenidos correctamente"
+            })
+        }).catch((error) => {
+            return res.status(404).json({
+                status: "error",
+                message: "Error al obtener los artículos",
+                error
+            })
         })
-    }).catch((error) => {
-        return res.status(404).json({
-            status: "error",
-            message: "Error al obtener los artículos",
-            error
-        })
-    })
+    }, 100)
+    
 }
 
 const one = (req, res) => {
