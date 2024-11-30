@@ -1,9 +1,12 @@
 const User = require("../Models/User")
 const bcrypt = require("bcrypt")
+const jwt = require("../Services/jwt")
+const mongoosePagination = require("mongoose-pagination")
 
 const testUser = (req, res) => {
     return res.status (200).send({
-        message: "Esta es una prueba"
+        message: "Esta es una prueba",
+        user: req.user
     })
 }
 
@@ -91,7 +94,7 @@ const login = async (req, res) => {
         }
 
         // Generar token
-        const token = "Aquí-generarás-tu-token"; 
+        const token = jwt.createToken(user)
 
         // Devolver datos del usuario junto con el token
         return res.status(200).send({
@@ -116,8 +119,136 @@ const login = async (req, res) => {
     }
 };
 
+const profile = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        // Buscar el usuario por su ID
+        const user = await User.findById(id).select({password: 0, role: 0});
+        
+        // Si el usuario no se encuentra, devolver un error
+        if (!user) {
+            return res.status(404).send({
+                status: "error",
+                message: "Usuario no encontrado"
+            });
+        }
+
+        // Devolver el perfil del usuario encontrado
+        return res.status(200).send({
+            status: "success",
+            user: user
+        });
+    } catch (error) {
+        // Manejo de errores si ocurre algún problema al buscar el usuario
+        return res.status(500).send({
+            status: "error",
+            message: "Error en la consulta del usuario",
+            error: error.message
+        });
+    }
+}
+
+const list = async (req, res) => {
+    let page = 1;
+    if (req.params.page) {
+        page = req.params.page;
+    }
+    page = parseInt(page);
+
+    const itemsPerPage = 5;
+
+    try {
+        const users = await User.find().sort('_id').skip((page - 1) * itemsPerPage).limit(itemsPerPage);
+        const total = await User.countDocuments(); // Total de usuarios
+
+        return res.status(200).send({
+            status: "success",
+            message: "Listado de usuarios",
+            currentPage: page,
+            users,
+            itemsPerPage,
+            total,
+            pages: Math.ceil(total / itemsPerPage), // Calculando el total de páginas
+        });
+    } catch (error) {
+        return res.status(404).send({
+            status: "error",
+            message: "Error en la consulta de usuarios",
+            error: error.message
+        });
+    }
+};
+
+const update = async (req, res) => {
+    let userIdentity = req.user;
+    let userToUpdate = req.body;
+
+    delete userToUpdate.iat;
+    delete userToUpdate.exp;
+    delete userToUpdate.role;
+    delete userToUpdate.image;
+
+    try {
+        // Comprobar si el email o el nickname ya están en uso
+        const users = await User.find({
+            $or: [
+                { email: userToUpdate.email.toLowerCase() },
+                { nickname: userToUpdate.nickname.toLowerCase() }
+            ]
+        });
+
+        let userIsset = false;
+        users.forEach(user => {
+            if (user && user._id != userIdentity.id) {
+                userIsset = true;
+                return;
+            }
+        });
+
+        if (userIsset) {
+            return res.status(200).send({
+                status: "success",
+                message: "El email o el nickname ya están en uso"
+            });
+        }
+
+        // Cifrar la contraseña si está presente
+        if (userToUpdate.password) {
+            const hashedPassword = await bcrypt.hash(userToUpdate.password, 10);
+            userToUpdate.password = hashedPassword;
+        }
+
+        // Actualizar el usuario
+        const userUpdated = await User.findByIdAndUpdate(userIdentity.id, userToUpdate, { new: true });
+
+        if (!userUpdated) {
+            return res.status(500).send({
+                status: "error",
+                message: "Error al actualizar el usuario"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            message: "Usuario actualizado correctamente",
+            userUpdated
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: "error",
+            message: "Error en la actualización del usuario",
+            error: error.message
+        });
+    }
+};
+
 module.exports = {
     testUser,
     register,
-    login
+    login,
+    profile,
+    list,
+    update
 }
