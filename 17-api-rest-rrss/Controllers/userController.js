@@ -2,6 +2,8 @@ const User = require("../Models/User")
 const bcrypt = require("bcrypt")
 const jwt = require("../Services/jwt")
 const mongoosePagination = require("mongoose-pagination")
+const fs = require("fs")
+const path = require("path")
 
 const testUser = (req, res) => {
     return res.status (200).send({
@@ -244,11 +246,82 @@ const update = async (req, res) => {
     }
 };
 
+const upload = async (req, res) => {
+    if (!req.file) {
+        return res.status(404).send({
+            status: "error",
+            message: "No se ha subido ninguna imagen"
+        });
+    }
+
+    let image = req.file.originalname;
+    const imageSplit = image.split(".");
+    const extension = imageSplit[1];
+
+    if (extension !== "png" && extension !== "jpg" && extension !== "jpeg" && extension !== "gif") {
+        const filePath = req.file.path;
+        fs.unlinkSync(filePath); // Eliminar el archivo si el formato no es válido
+        return res.status(400).send({
+            status: "error",
+            message: "Formato de imagen no válido"
+        });
+    }
+
+    try {
+        const userUpdated = await User.findOneAndUpdate(
+            { _id: req.user.id },
+            { image: req.file.filename },
+            { new: true }
+        );
+
+        if (!userUpdated) {
+            return res.status(500).send({
+                status: "error",
+                message: "Error al intentar subir el avatar"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            user: userUpdated,
+            file: req.file
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: "error",
+            message: "Error al intentar subir el avatar",
+            error: error.message
+        });
+    }
+};
+
+const avatar = (req, res) => {
+    const file = req.params.file
+
+    const filePath = "./uploads/avatars/"+file
+
+    fs.stat(filePath, (error, exists) => {
+        if(!exists){
+            return res.status(404).send({
+                status: "error",
+                message: "Archivo no encontrado"
+            })
+        }
+
+        return res.sendFile(path.resolve(filePath))
+    })
+
+    
+}
+
 module.exports = {
     testUser,
     register,
     login,
     profile,
     list,
-    update
+    update,
+    upload,
+    avatar
 }
