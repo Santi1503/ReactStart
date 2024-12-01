@@ -4,6 +4,7 @@ const jwt = require("../Services/jwt")
 const mongoosePagination = require("mongoose-pagination")
 const fs = require("fs")
 const path = require("path")
+const followService = require("../Services/followService")
 
 const testUser = (req, res) => {
     return res.status (200).send({
@@ -136,10 +137,14 @@ const profile = async (req, res) => {
             });
         }
 
+        const followInfo = await followService.followThisUser(req.user.id, id)
+
         // Devolver el perfil del usuario encontrado
         return res.status(200).send({
             status: "success",
-            user: user
+            user: user,
+            following: followInfo.following,
+            follower: followInfo.follower
         });
     } catch (error) {
         // Manejo de errores si ocurre algún problema al buscar el usuario
@@ -164,6 +169,8 @@ const list = async (req, res) => {
         const users = await User.find().sort('_id').skip((page - 1) * itemsPerPage).limit(itemsPerPage);
         const total = await User.countDocuments(); // Total de usuarios
 
+        const followInfo = await followService.followThisUser(req.user.id, id)
+
         return res.status(200).send({
             status: "success",
             message: "Listado de usuarios",
@@ -172,6 +179,8 @@ const list = async (req, res) => {
             itemsPerPage,
             total,
             pages: Math.ceil(total / itemsPerPage), // Calculando el total de páginas
+            userFolowing: followInfo.following,
+            userFollower: followInfo.follower
         });
     } catch (error) {
         return res.status(404).send({
