@@ -320,8 +320,36 @@ const avatar = (req, res) => {
 
         return res.sendFile(path.resolve(filePath))
     })
+}
 
-    
+const counters = async (req, res) => {
+
+    let userId = req.user.id;
+
+    if (req.params.id) {
+        userId = req.params.id;
+    }
+
+    try {
+        const following = await Follow.count({ "user": userId });
+
+        const followed = await Follow.count({ "followed": userId });
+
+        const publications = await Publication.count({ "user": userId });
+
+        return res.status(200).send({
+            userId,
+            following: following,
+            followed: followed,
+            publications: publications
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "error",
+            message: "Error en los contadores",
+            error
+        });
+    }
 }
 
 module.exports = {
@@ -332,5 +360,6 @@ module.exports = {
     list,
     update,
     upload,
-    avatar
+    avatar,
+    counters
 }

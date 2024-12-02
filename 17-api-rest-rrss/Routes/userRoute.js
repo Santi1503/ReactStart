@@ -25,6 +25,7 @@ router.get("/list/:page?", auth, userController.list)
 router.put("/update", auth, userController.update)
 router.post("/upload",[auth, uploads.single("file0")], userController.upload)
 router.get("/avatar/:file", auth, userController.avatar)
+router.get("/counters/:id", auth, userController.counters)
 
 
 module.exports = router
